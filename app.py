@@ -5,7 +5,7 @@ from flask import Flask, request
 
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, Bot
-from telegram.ext import CommandHandler, MessageHandler, CallbackContext, filters, CallbackQueryHandler, Dispatcher, Updater
+from telegram.ext import CommandHandler, MessageHandler, CallbackContext, Filters, CallbackQueryHandler, Dispatcher, Updater
 
 load_dotenv()
 
@@ -113,7 +113,7 @@ def main():
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(MessageHandler(filters.text & ~filters.command, handle_message))
+    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
     dispatcher.add_handler(CallbackQueryHandler(handle_button_click))
 
     updater.start_polling()
