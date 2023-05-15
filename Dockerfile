@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY app.py .
 
-RUN pip install openai flask python-dotenv telegram python-telegram-bot
+RUN pip install openai flask python-dotenv telegram python-telegram-bot==13.7
 
 EXPOSE 5000
 
